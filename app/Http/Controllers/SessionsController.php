@@ -24,7 +24,7 @@ class SessionsController extends Controller
         
 
         // 对用户身份进行认证
-        if(Auth::attempt($credentials)){
+        if(Auth::attempt($credentials, $request->has('remeber'))){
             // 登录成功后的相关操作
             session()->flash('success', '欢迎回来！');
             return redirect()->route('users.show', [Auth::user()]);
